@@ -1,0 +1,119 @@
+{% extends "Funcionarios/base.html" %}
+
+{% block content %}
+<div class="Margem">
+        <h4 class="alert-heading">Bem vindo <b>{{ user.first_name }} {{ user.last_name }}!!</b></h4>
+    </div>
+<p class="mb-0">
+<p></p>
+    <hr>
+<div class="row Margem">
+    <div class="col-sm-12 col-md-12 Centralizar">
+        <h4>Representação das atividades de <b>{{ user.first_name }} {{ user.last_name }}</b></h4>
+        <div style="width: 670px; height: 380px" id="chart-container"></div>
+        <script>
+            new RGraph.SVG.Pie({
+                id: 'chart-container',
+                data: [{{ Pendentes }}, {{ Executadas }}],
+                options: {
+                    labels: ['Pendentes', 'Executadas'],
+                    tooltips: ['Pendentes', 'Executadas'],
+                    shadow: true
+                }
+            }).draw();
+        </script>
+    </div>
+        <div class="Centralizar Margem Largura">
+            <br>
+            <h3 class="">Lista de atividades de <b>{{ user.first_name }} {{ user.last_name }}</b></h3>
+        </div>
+
+        <table class="table table-responsive Largura">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Projeto</th>
+                <th>Atividade</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Status</th>
+                <th>Horas</th>
+                <th>Alterar</th>
+            </tr>
+            </thead>
+            {% for Tarefas in users %}
+            <tbody>
+            <tr class="table-active">
+                <td>{{ Tarefas.Projeto }}</td>
+                <td>{{ Tarefas.Atividade }}</td>
+                <td>{{ Tarefas.Inicio }}</td>
+                <td>{{ Tarefas.Fim }}</td>
+                <td>{{ Tarefas.Status }}</td>
+                <td>{{ Tarefas.Horas }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+
+                            {% if Tarefas.Status == 'Pendente' %}
+                            <a href="{% url 'Funcionarios:iniciar' Tarefas.ID %}"><button type="button" class="btn btn-success"><img src="static/images/start.png"/></button></a>
+                            &nbsp;<a href="{% url 'Funcionarios:finalizar' Tarefas.ID %}"><button type="button" class="btn btn-danger"><img src="static/images/terminate.png"/></button></a>
+                            {% endif %}
+
+                            {% if Tarefas.Status == 'Executando' %}
+                            <button type="button" class="btn btn-success" disabled><img src="static/images/restart.png"/></button>
+                            &nbsp;<a href="{% url 'Funcionarios:pausar' Tarefas.ID %}"><button type="button" class="btn btn-warning"><img src="static/images/pause.png"/></button></a>
+                            &nbsp;<a href="{% url 'Funcionarios:parar' Tarefas.ID %}"><button type="button" class="btn btn-danger"><img src="static/images/stop.png"/></button></a>
+                            {% endif %}
+
+                            {% if Tarefas.Status == 'Parado' %}
+                            <a href="{% url 'Funcionarios:continuar' Tarefas.ID %}"><button type="button" class="btn btn-success"><img src="static/images/restart.png"/></button></a>
+                            &nbsp;<button type="button" class="btn btn-warning" disabled><img src="static/images/pause.png"/></button>
+                            &nbsp;<button type="button" class="btn btn-danger" disabled><img src="static/images/stop.png"/></button>
+                            {% elif Tarefas.Status == 'Pausado' %}
+                            <a href="{% url 'Funcionarios:continuar' Tarefas.ID %}"><button type="button" class="btn btn-success"><img src="static/images/restart.png"/></button></a>
+                            &nbsp;<button type="button" class="btn btn-warning" disabled><img src="static/images/pause.png"/></button>
+                            &nbsp;<a href="{% url 'Funcionarios:parar' Tarefas.ID %}"><button type="button" class="btn btn-danger"><img src="static/images/stop.png"/></button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <div class="Margem Centralizar">
+            <br>
+            <nav aria-label="Page navigation">
+                {% if users.has_other_pages %}
+                <ul class="pagination">
+                    {% if users.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ users.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-link disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in users.paginator.page_range %}
+                    {% if users.number == i %}
+                    <li class="page-item page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if users.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ users.next_page_number }}" aria-label="Next">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-link disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+</div>
+{% endblock %}

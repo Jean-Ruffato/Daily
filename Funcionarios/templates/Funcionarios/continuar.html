@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Continuar</title>
+</head>
+<body>
+{% for Tarefas in Tarefas %}
+Executando tarefa para: {{ Tarefas.Nome}} ...
+{% endfor %}
+<script language="JavaScript">
+window.location="{% url 'Funcionarios:home' %}";
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "Funcionarios/base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="col-sm-2 col-md-11 Margem">
+    <div class="jumbotron">
+        <h1 class="display-5"><b>{{ atividade.Atividade }}</b></h1>
+        <hr class="my-4">
+        <h3 class="display-5">{{ atividade.Descricao }}</h3>
+        <hr class="my-4">
+        <p class=""><b>Responsável:</b> {{ atividade.Nome }}.</p>
+        <p><b>Início:</b> {{ atividade.Inicio }}</p>
+        <p><b>Fim:</b> {{ atividade.Fim }}</p>
+        <p><b>Projeto: </b>{{ atividade.Projeto }}</p>
+        <p><b>Status: </b>{{ atividade.Status }}</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'Funcionarios:atividades' %}" role="button">Voltar</a>
+            <a class="btn btn-danger btn-lg" href="{% url 'Funcionarios:apagar' atividade.ID %}" role="button">Apagar</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

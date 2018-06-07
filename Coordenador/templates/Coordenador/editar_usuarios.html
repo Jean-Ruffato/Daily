@@ -1,0 +1,12 @@
+{% extends "Coordenador/base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="col-sm-2 col-md-11 Margem Centralizar">
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ editar_usuarios|bootstrap }}
+        <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+</div>
+{% endblock %}

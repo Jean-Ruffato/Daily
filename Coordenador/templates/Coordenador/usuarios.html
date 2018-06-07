@@ -1,0 +1,103 @@
+{% extends "Coordenador/base.html" %}
+{% block content %}
+    {% if perms.Funcionarios.Coordenador %}
+        <div class="Margem">
+            <h4 class="alert-heading">Bem vindo <b>{{ user.first_name }} {{ user.last_name }}!!</b></h4>
+        </div>
+        <p></p>
+        <hr>
+        <p class="mb-0">
+
+        <div class="row Margem">
+            <div class="Centralizar Largura">
+                <h4 class="">Lista de usuários</h4>
+            </div>
+            <table class="table table-responsive Largura">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Nome</th>
+                    <th>Usuário</th>
+                    <th>Administrador</th>
+                    <th>Ativo</th>
+                    <th>Data de criação</th>
+                    <th>Último login</th>
+                    <th>Editar</th>
+                </tr>
+                </thead>
+                {% for Projetos in usuario %}
+                    <tbody>
+                    <tr class="table-active">
+                        <td>{{ Projetos.first_name }} {{ Projetos.last_name }}</td>
+                        <td>{{ Projetos.username }}</td>
+                        <td>
+                            {% if Projetos.is_staff == True %}
+                            Sim
+                            {% endif %}
+                            {% if Projetos.is_staff == False %}
+                            Não
+                            {% endif %}
+                        </td>
+                        <td>{% if Projetos.is_active == True %}
+                            Sim
+                            {% endif %}
+                            {% if Projetos.is_active == False %}
+                            Não
+                            {% endif %}
+                        </td>
+                        <td>{{ Projetos.date_joined }}</td>
+                        <td>{{ Projetos.last_login }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="{% url 'Coordenador:editar_usuarios' Projetos.id%}"><button type="button" class="btn btn-warning"><img src="/static/images/edit.png"/></button></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+            <div class="Margem Centralizar">
+                <br>
+                <nav aria-label="Page navigation">
+                    {% if Paginacao_Projetos.has_other_pages %}
+                        <ul class="pagination">
+                            {% if Paginacao_Projetos.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ Paginacao_Projetos.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-link disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in Paginacao_Projetos.paginator.page_range %}
+                                {% if Paginacao_Projetos.number == i %}
+                                    <li class="page-item page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if Paginacao_Projetos.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ Paginacao_Projetos.next_page_number }}" aria-label="Next">
+                                        &raquo;
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-link disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+        <br><br>
+    {% else %}
+        <div class="alert alert-danger Margem" role="alert">
+            Você não tem permissão para acessar essa página!!
+        </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <title>Daily</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <link rel="icon" href="{% static 'images/Hourglass-icon.png' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/RGraph.svg.common.core.js' %}"></script>
+    <script src="{% static 'js/RGraph.svg.common.tooltips.js' %}"></script>
+    <script src="{% static 'js/RGraph.svg.pie.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style type="text/css">
+        *{
+            font-family: calibri;
+        }
+    </style>
+    <script>
+        $(function () {
+          $('[data-toggle="popover"]').popover()
+        })
+
+
+    </script>
+</head>
+
+<body style="background-color:#EDEDED">
+<div class="nav-side-menu">
+    <div class="brand"><b>Projeto Daily</b><br>
+        <p><a href=""><img src="{% static 'images/leitura.png' %}"/></a>
+        </p><span class="badge badge-pill"><b><a href="{% url 'encerrar' %}">
+            Sair: {{ user.first_name }} {{ user.last_name }}
+        </a></b><p></span>
+
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn btn btn-primary" data-toggle="collapse" data-target="#menu-content">=</i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li>
+                <a href="{% url 'Funcionarios:home' %}">
+                    <i class="fa fa-dashboard fa-lg"></i> Home
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                <a href="#"><i class="fa fa-gift fa-lg"></i><span class=""></span></a>RH
+            </li>
+            <ul class="sub-menu collapse active" id="products">
+                <li class=""><a href="#">Extrato Horas</a></li>
+                <li class=""><a href="#">Consolidado</a></li>
+            </ul>
+            <li>
+                <a href="{% url 'Funcionarios:atividades' %}">
+                    <i class="fa fa-users fa-lg"></i> Atividades Executadas
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'Funcionarios:pendentes' %}">
+                    <i class="fa fa-users fa-lg"></i> Atividades Pendentes
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid Background" id="main">
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <center><b>Acesso em:</b> {{ user.last_login }}</center>
+            <nav class="nav nav-tabs" id="myTab" role="tablist">
+                <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="/home" role="tab" aria-controls="nav-profile">Home</a>
+                {% if perms.Funcionarios.Coordenador %}
+                <a class="nav-item nav-link" id="nav-coor-tab" data-toggle="tab" href="{% url 'Coordenador:home' %}" role="tab" aria-controls="nav-home" aria-expanded="true">Coordenador</a>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="">Coordenador</a>
+                </li>
+                {% endif %}
+                <a class="nav-item nav-link active" id="nav-fun-tab" data-toggle="tab" href="/funcionarios" role="tab" aria-controls="nav-profile">Funcionário</a>
+            </nav>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
