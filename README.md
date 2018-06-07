@@ -20,25 +20,25 @@ Como segue:
 * Para esse módulo, imagino uma tela além dos campos Nome e Departamento do
 Funcionário, mais os seguintes campos:
 
-1 Horário de inicio: (preenchimento automaticamente) pelo botão
+## 1 Horário de inicio: (preenchimento automaticamente) pelo botão
 (Iniciar);
-2 Nome de Projeto: (preenchimento por lista de opções); Os nomes
+## 2 Nome de Projeto: (preenchimento por lista de opções); Os nomes
 dos Projetos serão cadastrados pelos coordenadores. Mais
 informação abaixo no módulo Coordenador.
-3 Tipo de Atividade: (preenchimento por lista de opções); Os
+## 3 Tipo de Atividade: (preenchimento por lista de opções); Os
 nomes das Atividades serão incluídas pelos coordenadores. Mais
 informação abaixo no módulo Coordenador.
-4 Horário Fim: (preenchimento automaticamente) pelos botões
+## 4 Horário Fim: (preenchimento automaticamente) pelos botões
 (Pausar) ou (Parar/Interromper);
 
 * Apenas para ilustrar:
-Momento 1: Chegando pela manhã, o funcionário vai até sua pagina no botão
+## Momento 1: Chegando pela manhã, o funcionário vai até sua pagina no botão
 (Inicio); Em seguida, no campo Atividade escolhe a atividade a ser executada;
-Momento 2: Após 1 hora, decide pausar a atividade botão (Pausar). Esta opção
+## Momento 2: Após 1 hora, decide pausar a atividade botão (Pausar). Esta opção
 de botão mantém a mesma atividade em execução, porém, precisou pausar
 apenas.
 
-Momento 3: Após 3 horas, o funcionário foi para uma reunião em outro
+## Momento 3: Após 3 horas, o funcionário foi para uma reunião em outro
 departamento, ele clicou no botão (Parar/Interromper). Antes de ir, ele poderá
 abrir uma nova linha de registro com a atividade (Reunião) ou deixar para
 registrar quando voltar dela.
@@ -77,7 +77,7 @@ Importante: “Controle Saldos de horários” valerá para os casos de Entrada,
 de Almoço e Saída. Este controle será por dia e ficará disponível para o
 funcionário, seu gestor e módulo RH.
 
-4o Módulo: Coordenadores
+## 4o Módulo: Coordenadores
 * Cada Coordenador terá sua página no sistema;
 * O acesso será por meio de senha pessoal e intransferível;
 * Nela, terá visão dos registros realizados pelos funcionários sob sua coordenação;
@@ -93,7 +93,7 @@ projeto. Também indicará as horas contratadas em cada projeto.
 sucedido, enfim, terá consultas para uma melhor gestão;
 * Uma visão coordenada de toda sua área.
 
-3o Módulo: Departamento de RH
+## 3o Módulo: Departamento de RH
 Principais vantagens:
 * Extinção do processo manual de consolidação de horas. Já que os registros de
 toda empresa será on-line e consolidado ao final de cada dia;
@@ -105,7 +105,7 @@ negativos entre outros;
 departamento, funcionário, projetos e atividades;
 * Enfim, a área de RH terá uma visão coordenada de todas as áreas da empresa,
 possibilitando a tomada de decisão e soluções antecipadas.
-2o Módulo: FINANCEIRO
+## 2o Módulo: FINANCEIRO
 Principais vantagens:
 * Maior controle das horas a serem faturadas. Nesse módulo, a pessoa da área
 financeira terá uma visão clara e objetiva das horas liberadas para faturamento
@@ -119,7 +119,7 @@ em um campo disponível digitará o número da Nota Fiscal.
 * A vantagem é que a comunicação entre os diretores e a área financeira será on-
 line dentro do mesmo sistema, evitando desencontros de informações.
 
-1o Módulo: Diretores
+## 1o Módulo: Diretores
 * Para este nível, o sistema reserva importantes funções e funcionalidades
 importantes nas tomadas de decisões;
 * Controle e gestão das informações financeiras da empresa, como exemplo,
