@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'Daily.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'u249911339_net',
-        'USER': 'jean',
+        'NAME': 'daily',
+        'USER': 'postgres',
         'PASSWORD': '8232690',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
