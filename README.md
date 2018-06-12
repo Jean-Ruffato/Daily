@@ -20,25 +20,25 @@ Como segue:
 * Para esse módulo, imagino uma tela além dos campos Nome e Departamento do
 Funcionário, mais os seguintes campos:
 
-## 1 Horário de inicio: (preenchimento automaticamente) pelo botão
+### 1 Horário de inicio: (preenchimento automaticamente) pelo botão
 (Iniciar);
-## 2 Nome de Projeto: (preenchimento por lista de opções); Os nomes
+### 2 Nome de Projeto: (preenchimento por lista de opções); Os nomes
 dos Projetos serão cadastrados pelos coordenadores. Mais
 informação abaixo no módulo Coordenador.
-## 3 Tipo de Atividade: (preenchimento por lista de opções); Os
+### 3 Tipo de Atividade: (preenchimento por lista de opções); Os
 nomes das Atividades serão incluídas pelos coordenadores. Mais
 informação abaixo no módulo Coordenador.
-## 4 Horário Fim: (preenchimento automaticamente) pelos botões
+### 4 Horário Fim: (preenchimento automaticamente) pelos botões
 (Pausar) ou (Parar/Interromper);
 
 * Apenas para ilustrar:
-## Momento 1: Chegando pela manhã, o funcionário vai até sua pagina no botão
+### Momento 1: Chegando pela manhã, o funcionário vai até sua pagina no botão
 (Inicio); Em seguida, no campo Atividade escolhe a atividade a ser executada;
-## Momento 2: Após 1 hora, decide pausar a atividade botão (Pausar). Esta opção
+### Momento 2: Após 1 hora, decide pausar a atividade botão (Pausar). Esta opção
 de botão mantém a mesma atividade em execução, porém, precisou pausar
 apenas.
 
-## Momento 3: Após 3 horas, o funcionário foi para uma reunião em outro
+### Momento 3: Após 3 horas, o funcionário foi para uma reunião em outro
 departamento, ele clicou no botão (Parar/Interromper). Antes de ir, ele poderá
 abrir uma nova linha de registro com a atividade (Reunião) ou deixar para
 registrar quando voltar dela.
