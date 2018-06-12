@@ -15,6 +15,7 @@ class Projetos(models.Model):
     ID = models.AutoField('ID', primary_key=True)
     Projeto = models.CharField('Projeto', max_length=50)
     Responsavel = models.CharField('Responsavel', max_length=50)
+    Integrantes = models.CharField('Integrantes', max_length=1000, null=True)
     Prazo = models.DateField('Prazo', blank=True, null=True)
     Horas = models.IntegerField('Horas', blank=True, null=True, default='01')
     Valor = models.IntegerField('Valor', blank=True, null=True, default='01')
