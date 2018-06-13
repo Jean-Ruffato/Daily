@@ -16,7 +16,7 @@ def iniciar(request, pk):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
-        Atividades.objects.filter(Status='Executando').update(Fim=datetime.now(), Status='Parado')
+        Atividades.objects.filter(Status='Executando').update(Fim=datetime.now(), Status='Pendente')
         Atividades.objects.filter(ID=pk).update(Inicio=datetime.now(), Status='Executando')
         return render(request, 'Funcionarios/iniciar.html', {})
 
