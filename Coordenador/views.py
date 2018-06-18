@@ -3,6 +3,7 @@ from datetime import datetime
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+import re
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
 from django.db import connection
@@ -156,7 +157,9 @@ def integrantes(request, pk):
         if form.is_valid():
             integrantes_banco = Projetos.objects.get(ID=pk)
             lista_integrantes = [integrantes_banco.Integrantes] + [form.cleaned_data.get('Integrantes')]
-            Projetos.objects.update(ID=pk, Integrantes=lista_integrantes)
+            rm_string1 = re.sub(r'Perfil', '', str(lista_integrantes))
+            rm_string2 = re.sub(u'[^a-zA-Z0-9áéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇ, ]', '', str(rm_string1))
+            Projetos.objects.filter(ID=pk).update(Integrantes=rm_string2)
             return redirect('Coordenador:perfil_projetos')
         else:
             return render(request, 'Coordenador/integrantes.html', {'integrantes': form})
