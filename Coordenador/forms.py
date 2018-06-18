@@ -24,7 +24,7 @@ class CadastrarProjeto(forms.ModelForm):
 
     class Meta:
         model = Projetos
-        exclude = ['Status']
+        exclude = ['Status', 'Integrantes']
 
 
 class DefinirAtividade(forms.ModelForm):
@@ -37,6 +37,17 @@ class DefinirAtividade(forms.ModelForm):
     class Meta:
         model = Atividades
         exclude = ['Inicio', 'Fim', 'Horas', 'Status', 'Departamento']
+
+
+class Integrantes(forms.ModelForm):
+    # Projeto = forms.ModelChoiceField(queryset=Projetos.objects.all())
+    Integrantes = forms.ModelChoiceField(queryset=Perfil.objects.all())
+
+    class Meta:
+        model = Projetos
+        exclude = ['Inicio', 'Fim', 'Horas', 'Status',
+                   'Departamento', 'Prazo', 'Responsavel',
+                   'Projeto', 'Valor', 'Descricao']
 
 
 class EditarUsuarios(ModelForm):

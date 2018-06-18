@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^coordenador/editar_projeto/(?P<pk>\d+)/$', views.editar_projeto, name='editar_projeto'),
     url(r'^coordenador/editar_usuarios/(?P<pk>\d+)/$', views.editar_usuarios, name='editar_usuarios'),
     url(r'^coordenador/editar_atividade/(?P<pk>\d+)/$', views.editar_atividade, name='editar_atividade'),
+    url(r'^coordenador/integrantes/(?P<pk>\d+)/$', views.integrantes, name='integrantes')
 ]

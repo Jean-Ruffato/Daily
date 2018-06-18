@@ -8,7 +8,8 @@ from django.http import HttpResponseRedirect
 from django.db import connection
 from django.shortcuts import render, redirect
 from Funcionarios.models import Projetos, Atividades, Perfil
-from .forms import CadastrarProjeto, DefinirAtividade, EditarProjeto, EditarAtividades, SignUpForm, EditarUsuarios
+from .forms import CadastrarProjeto, DefinirAtividade, EditarProjeto, EditarAtividades, SignUpForm, EditarUsuarios, \
+    Integrantes
 
 
 def signup(request):
@@ -145,6 +146,22 @@ def editar_projeto(request, pk):
             return render(request, 'Coordenador/editar_projeto.html', {'editar_projeto': form})
 
 
+# View para renderizar a página de projetos, converter para lista e executar o post do formulário.
+def integrantes(request, pk):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/?next=%s' % request.path)
+    else:
+        ident = Projetos.objects.get(ID=pk)
+        form = Integrantes(request.POST or None, instance=ident)
+        if form.is_valid():
+            integrantes_banco = Projetos.objects.get(ID=pk)
+            lista_integrantes = [integrantes_banco.Integrantes] + [form.cleaned_data.get('Integrantes')]
+            Projetos.objects.update(ID=pk, Integrantes=lista_integrantes)
+            return redirect('Coordenador:perfil_projetos')
+        else:
+            return render(request, 'Coordenador/integrantes.html', {'integrantes': form})
+
+
 def editar_atividade(request, pk):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/?next=%s' % request.path)
@@ -176,7 +193,7 @@ def perfil_projetos(request):
     else:
         user = User.objects.get(pk=request.user.id)
         nome = user.first_name + ' ' + user.last_name
-        perfil = Projetos.objects.filter(Responsavel=nome).order_by('Status')
+        perfil = Projetos.objects.filter().order_by('Status')
         page = request.GET.get('page', 1)
         paginator = Paginator(perfil, 5)
         try:

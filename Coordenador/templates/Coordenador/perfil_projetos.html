@@ -29,6 +29,7 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="{% url 'Coordenador:perfil_projeto' Perfil.ID %}"><button type="button" class="btn btn-warning"><img src="/static/images/visualize.png"/></button></a>
+                        &nbsp;<a href="{% url 'Coordenador:integrantes' Perfil.ID %}"><button type="button" class="btn btn-info"><img src="/static/images/add.png"/></button></a>
                         &nbsp;<a href="{% url 'Coordenador:apagar_projeto' Perfil.ID %}"><button type="button" class="btn btn-danger"><img src="/static/images/delete.png"/></button></a>
                     </div>
                 </div>
