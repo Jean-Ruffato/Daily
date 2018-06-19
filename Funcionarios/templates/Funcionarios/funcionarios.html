@@ -17,7 +17,8 @@
                 data: [{{ Pendentes }}, {{ Executadas }}],
                 options: {
                     labels: ['Pendentes', 'Executadas'],
-                    tooltips: ['Pendentes', 'Executadas'],
+                    tooltips: ['<a href="http://127.0.0.1:8000/funcionarios/pendentes" target="">Pendentes</a>',
+                               '<a href="http://127.0.0.1:8000/funcionarios/atividades" target="">Executadas</a>'],
                     shadow: true
                 }
             }).draw();
