@@ -49,6 +49,7 @@ class Atividades(models.Model):
     Atividade = models.CharField('Atividade', max_length=40)
     Prazo = models.DateField('Prazo', blank=True, null=True)
     Status = models.CharField('Status', max_length=10, default='Pendente')
+    Prioridade = models.IntegerField('prioridade', null=False, default=5)
     Descricao = models.TextField('Descricao', max_length=200)
     Horas = models.TimeField('Horas', blank=True, null=True, default='00:00:00')
 

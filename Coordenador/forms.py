@@ -30,6 +30,15 @@ class CadastrarProjeto(forms.ModelForm):
 class DefinirAtividade(forms.ModelForm):
     Nome = forms.ModelChoiceField(queryset=Perfil.objects.all())
     Projeto = forms.ModelChoiceField(queryset=Projetos.objects.all())
+    escolhas = (
+        (1, "0"),
+        (2, "1"),
+        (3, "2"),
+        (4, "3"),
+        (5, "4"),
+        (6, "5")
+    )
+    Prioridade = forms.ChoiceField(choices=escolhas, label="Prioridade", initial='6', widget=forms.Select())
     Atividade = forms.CharField()
     Prazo = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}))
     Descricao = forms.CharField(widget=forms.Textarea)
@@ -77,6 +86,15 @@ class EditarProjeto(ModelForm):
 class EditarAtividades(ModelForm):
     Nome = forms.ModelChoiceField(queryset=Perfil.objects.all())
     Projeto = forms.ModelChoiceField(queryset=Projetos.objects.all())
+    escolhas = (
+        (1, "0"),
+        (2, "1"),
+        (3, "2"),
+        (4, "3"),
+        (5, "4"),
+        (6, "5")
+    )
+    Prioridade = forms.ChoiceField(choices=escolhas, label="Prioridade", widget=forms.Select())
     status = (
         ('Executando', 'Executando'),
         ('Pendente', 'Pendente'),
