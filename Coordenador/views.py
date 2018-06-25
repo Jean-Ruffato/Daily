@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from datetime import date
 from datetime import datetime
-
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 import re
@@ -59,40 +59,42 @@ def home(request):
             users = paginator.page(paginator.num_pages)
         lista_projetos = Projetos.objects.all()
 
-        janeiro = Atividades.objects.filter(Inicio__month='01', Status='Parado')
+        ano = date.today()
+
+        janeiro = Atividades.objects.filter(Inicio__month='01', Inicio__year=ano.year, Status='Parado')
         contagem_janeiro = len(janeiro)
 
-        fevereiro = Atividades.objects.filter(Inicio__month='02', Status='Parado')
+        fevereiro = Atividades.objects.filter(Inicio__month='02', Inicio__year=ano.year, Status='Parado')
         contagem_fevereiro = len(fevereiro)
 
-        marco = Atividades.objects.filter(Inicio__month='03', Status='Parado')
+        marco = Atividades.objects.filter(Inicio__month='03', Inicio__year=ano.year, Status='Parado')
         contagem_marco = len(marco)
 
-        abril = Atividades.objects.filter(Inicio__month='04', Status='Parado')
+        abril = Atividades.objects.filter(Inicio__month='04', Inicio__year=ano.year, Status='Parado')
         contagem_abril = len(abril)
 
-        maio = Atividades.objects.filter(Inicio__month='05', Status='Parado')
+        maio = Atividades.objects.filter(Inicio__month='05', Inicio__year=ano.year, Status='Parado')
         contagem_maio = len(maio)
 
-        junho = Atividades.objects.filter(Inicio__month='06', Status='Parado')
+        junho = Atividades.objects.filter(Inicio__month='06', Inicio__year=ano.year, Status='Parado')
         contagem_junho = len(junho)
 
-        julho = Atividades.objects.filter(Inicio__month='07', Status='Parado')
+        julho = Atividades.objects.filter(Inicio__month='07', Inicio__year=ano.year, Status='Parado')
         contagem_julho = len(julho)
 
-        agosto = Atividades.objects.filter(Inicio__month='08', Status='Parado')
+        agosto = Atividades.objects.filter(Inicio__month='08', Inicio__year=ano.year, Status='Parado')
         contagem_agosto = len(agosto)
 
-        setembro = Atividades.objects.filter(Inicio__month='09', Status='Parado')
+        setembro = Atividades.objects.filter(Inicio__month='09', Inicio__year=ano.year, Status='Parado')
         contagem_setembro = len(setembro)
 
-        outubro = Atividades.objects.filter(Inicio__month='10', Status='Parado')
+        outubro = Atividades.objects.filter(Inicio__month='10', Inicio__year=ano.year, Status='Parado')
         contagem_outubro = len(outubro)
 
-        novembro = Atividades.objects.filter(Inicio__month='11', Status='Parado')
+        novembro = Atividades.objects.filter(Inicio__month='11', Inicio__year=ano.year, Status='Parado')
         contagem_novembro = len(novembro)
 
-        dezembro = Atividades.objects.filter(Inicio__month='12', Status='Parado')
+        dezembro = Atividades.objects.filter(Inicio__month='12', Inicio__year=ano.year, Status='Parado')
         contagem_dezembro = len(dezembro)
         return render(request, 'Coordenador/home.html',
                       {'Projetos': projetos, 'Tarefas': tarefas, 'usuario': nome, 'users': users,
