@@ -31,12 +31,12 @@ class DefinirAtividade(forms.ModelForm):
     Nome = forms.ModelChoiceField(queryset=Perfil.objects.all())
     Projeto = forms.ModelChoiceField(queryset=Projetos.objects.all())
     escolhas = (
-        (1, "0"),
-        (2, "1"),
-        (3, "2"),
-        (4, "3"),
-        (5, "4"),
-        (6, "5")
+        (0, "1"),
+        (1, "2"),
+        (2, "3"),
+        (3, "4"),
+        (4, "5"),
+        (5, "6")
     )
     Prioridade = forms.ChoiceField(choices=escolhas, label="Prioridade", initial='6', widget=forms.Select())
     Atividade = forms.CharField()
@@ -87,12 +87,12 @@ class EditarAtividades(ModelForm):
     Nome = forms.ModelChoiceField(queryset=Perfil.objects.all())
     Projeto = forms.ModelChoiceField(queryset=Projetos.objects.all())
     escolhas = (
-        (1, "0"),
-        (2, "1"),
-        (3, "2"),
-        (4, "3"),
-        (5, "4"),
-        (6, "5")
+        (0, "0"),
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5")
     )
     Prioridade = forms.ChoiceField(choices=escolhas, label="Prioridade", widget=forms.Select())
     status = (
