@@ -1,15 +1,16 @@
 {% load staticfiles %}
-<html>
-<html lang="en">
+<html ng-app="BuscaSerial">
 <head>
     <title>Daily</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{% static 'js/angular.min.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <!-- <script src="{% static 'js/popper.min.js' %}"></script>-->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <link rel="icon" href="{% static 'images/Hourglass-icon.png' %}">
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/RGraph.svg.common.core.js' %}"></script>
     <script src="{% static 'js/RGraph.svg.bar.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
@@ -19,22 +20,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <style type="text/css">
         *{
-            font-family: calibri;
+            font-family: "Cambria";
         }
     </style>
 
+    <script>
+        var app = angular.module("BuscaSerial", []);
+        app.controller("BuscaSerialCtrl", function($scope) {
+            $scope.message = "BuscaSerial";
+        });
+    </script>
 </head>
 
-<body style="background-color:#EDEDED">
+<body style="background-color:#EDEDED" >
 <div class="nav-side-menu">
     <div class="brand"><b>Projeto Daily</b><br>
         <a href=""><img src="{% static 'images/leitura.png' %}"/></a>
         <!--<br><img src="{% static 'images/email.png' %}"/>
         <img src="{% static 'images/chat.png' %}"/>-->
-        <p></p><p></p><span class="badge badge-pill"><b><a href="{% url 'encerrar' %}">
+        <p></p><p></p>
+        <span class="badge badge-pill"><b><a href="{% url 'encerrar' %}">
             Sair: {{ user.first_name }} {{ user.last_name }}
-        </a></b><p></span>
-
+            </a></b></span>
     </div>
     <i class="fa fa-bars fa-2x toggle-btn btn btn-primary" data-toggle="collapse" data-target="#menu-content">=</i>
     <div class="menu-list">

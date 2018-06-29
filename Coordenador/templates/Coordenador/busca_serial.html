@@ -1,0 +1,10 @@
+{% extends "Coordenador/base.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="Margem">
+        {% csrf_token %}
+        <div ng-controller="BuscaSerialCtrl">
+            {{message}}
+        </div>
+</div>
+{% endblock %}

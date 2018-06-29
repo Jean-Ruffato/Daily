@@ -180,6 +180,13 @@ def editar_atividade(request, pk):
             return render(request, 'Coordenador/editar_atividades.html', {'editar_atividades': form})
 
 
+def pesquisar_serial(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/?next=%s' % request.path)
+    else:
+        return render(request, 'Coordenador/busca_serial.html', {})
+
+
 def cadastrar_projeto(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/?next=%s' % request.path)
