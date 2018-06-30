@@ -33,7 +33,7 @@ def signup(request):
 
 
 def home(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -112,7 +112,7 @@ def usuarios(request):
 
 
 def editar_usuarios(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         ident = User.objects.get(id=pk)
@@ -125,7 +125,7 @@ def editar_usuarios(request, pk):
 
 
 def definir_atividade(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         form = DefinirAtividade(request.POST or None)
@@ -137,7 +137,7 @@ def definir_atividade(request):
 
 
 def editar_projeto(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         ident = Projetos.objects.get(ID=pk)
@@ -151,7 +151,7 @@ def editar_projeto(request, pk):
 
 # View para renderizar a página de projetos, converter para lista e executar o post do formulário.
 def integrantes(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         ident = Projetos.objects.get(ID=pk)
@@ -168,7 +168,7 @@ def integrantes(request, pk):
 
 
 def editar_atividade(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         ident = Atividades.objects.get(ID=pk)
@@ -181,14 +181,14 @@ def editar_atividade(request, pk):
 
 
 def pesquisar_serial(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         return render(request, 'Coordenador/busca_serial.html', {})
 
 
 def cadastrar_projeto(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         form = CadastrarProjeto(request.POST or None)
@@ -200,7 +200,7 @@ def cadastrar_projeto(request):
 
 
 def perfil_projetos(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -219,7 +219,7 @@ def perfil_projetos(request):
 
 
 def perfil_projeto(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -240,7 +240,7 @@ def perfil_projeto(request, pk):
 
 
 def apagar_projeto(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         projetos = Projetos.objects.filter(ID=pk)

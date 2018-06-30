@@ -13,7 +13,7 @@ def iniciar(request, pk):
         View para preencher os dados da tabela de funcionarios e tarefas.
         Também possúi queries para iniciar, pausar e parar uma atividade.
     """
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         Atividades.objects.filter(Status='Executando').update(Fim=datetime.now(), Status='Pendente')
@@ -22,7 +22,7 @@ def iniciar(request, pk):
 
 
 def home(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         lista_atividades = Atividades.objects.all()
@@ -30,7 +30,7 @@ def home(request):
 
 
 def continuar(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -64,7 +64,7 @@ def continuar(request, pk):
 
 
 def pausar(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -93,7 +93,7 @@ def pausar(request, pk):
 
 
 def parar(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         """
@@ -130,7 +130,7 @@ def parar(request, pk):
 
 
 def finalizar(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         """
@@ -147,7 +147,7 @@ def funcionarios(request):
         View para preencher os dados da tabela de funcionarios e tarefas.
         Também possúi queries para iniciar, pausar e parar uma atividade.
     """
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -174,7 +174,7 @@ def login(request):
 
 
 def atividades(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -193,7 +193,7 @@ def atividades(request):
 
 
 def atividade(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -203,7 +203,7 @@ def atividade(request, pk):
 
 
 def pendentes(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -223,7 +223,7 @@ def pendentes(request):
 
 
 def pendente(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -233,7 +233,7 @@ def pendente(request, pk):
 
 
 def apagar(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
@@ -244,7 +244,7 @@ def apagar(request, pk):
 
 
 def apagar_pendente(request, pk):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/?next=%s' % request.path)
     else:
         user = User.objects.get(pk=request.user.id)
