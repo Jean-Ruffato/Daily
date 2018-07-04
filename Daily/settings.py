@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Coordenador',
     'Base',
     'bootstrapform',
+    'rest_framework',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only

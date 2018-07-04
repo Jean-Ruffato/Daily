@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^encerrar', auth_views.logout, {'next_page': '/'}, name='encerrar'),
     url(r'^', include(('Funcionarios.urls', 'Funcionarios'), namespace='Funcionarios')),
     url(r'^', include(('Coordenador.urls', 'Coordenador', ), namespace='Coordenador')),
+    url(r'^', include(('api.urls', 'api', ), namespace='api')),
     url(r'^', include(('Base.urls', 'Base'), namespace='Base')),
     url(r'^admin/', admin.site.urls),
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
