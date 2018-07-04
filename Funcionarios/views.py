@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from Funcionarios.models import Atividades, Projetos
-from .serializer import ProjetosSerializer, AtividadesSerializer
+from Funcionarios.models import Atividades, Projetos, Perfil
+from .serializer import ProjetosSerializer, AtividadesSerializer, PerfilSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -24,6 +24,14 @@ class AtividadesView(APIView):
 
     def get(self, request, format=None):
         serializer = self.serializer_class(Atividades.objects.all(), many=True)
+        return Response(serializer.data)
+
+
+class PerfilView(APIView):
+    serializer_class = PerfilSerializer
+
+    def get(self, request, format=None):
+        serializer = self.serializer_class(Perfil.objects.all(), many=True)
         return Response(serializer.data)
 
 

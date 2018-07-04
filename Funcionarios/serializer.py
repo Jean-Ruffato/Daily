@@ -22,3 +22,13 @@ class AtividadesSerializer (serializers.ModelSerializer):
         depth = 1
         fields = ['ID', 'Nome', 'Inicio', 'Fim', 'Projeto', 'Atividade',
                   'Prazo', 'Status', 'Prioridade', 'Descricao', 'Horas']
+
+
+class PerfilSerializer (serializers.ModelSerializer):
+    """
+        Classe para serialização de dados do modelo Perfil e servir uma Api com esses dados
+    """
+    class Meta:
+        model = Perfil
+        depth = 1
+        fields = ['nome']
