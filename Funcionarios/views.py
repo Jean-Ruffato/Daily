@@ -9,17 +9,34 @@ from Funcionarios.models import Atividades, Projetos, Perfil
 from .serializer import ProjetosSerializer, AtividadesSerializer, PerfilSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 
 
-class ProjetosView(APIView):
+class ProjetosListView(APIView):
     serializer_class = ProjetosSerializer
 
     def get(self, request, format=None):
         serializer = self.serializer_class(Projetos.objects.all(), many=True)
         return Response(serializer.data)
 
+    def post(self, request, format=None):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"message": "403 Forbidden"}, status=status.HTTP_409_CONFLICT)
 
-class AtividadesView(APIView):
+
+class ProjetosIDView(APIView):
+    serializer_class = ProjetosSerializer
+
+    def get(self, request, pk, format=None):
+        serializer = self.serializer_class(Projetos.objects.get(pk=pk))
+        return Response(serializer.data)
+
+
+class AtividadesListView(APIView):
     serializer_class = AtividadesSerializer
 
     def get(self, request, format=None):
@@ -27,7 +44,15 @@ class AtividadesView(APIView):
         return Response(serializer.data)
 
 
-class PerfilView(APIView):
+class AtividadesIDView(APIView):
+    serializer_class = AtividadesSerializer
+
+    def get(self, request, pk, format=None):
+        serializer = self.serializer_class(Atividades.objects.get(pk=pk))
+        return Response(serializer.data)
+
+
+class PerfilListView(APIView):
     serializer_class = PerfilSerializer
 
     def get(self, request, format=None):
