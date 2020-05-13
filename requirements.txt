@@ -13,7 +13,7 @@ Naked==0.1.31
 patterns==0.3
 psycopg2==2.7.1
 pytz==2017.2
-PyYAML==3.12
+PyYAML==5.1
 requests==2.18.3
 status==0.2.5
 urllib3==1.24.2
